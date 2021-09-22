@@ -16,9 +16,6 @@ Hooks.on('updateActor', async (actor, data, options, userId) => {
     var whisper = game.users.entities.filter(u => u.isGm).map(u => u.id);
     var speaker = {"alias": "Speaker"};
     sendMessage(content, actor);
-    
-
-    
   }
 })
 

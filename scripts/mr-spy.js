@@ -13,15 +13,9 @@ Hooks.on('updateActor', async (actor, data, options, userId) => {
       }
     });
     var content = "Character " + name + " has been updated! " + result + " by " + userName;
-    var whisper = game.users.entities.filter(u => u.isGm).map(u => u.id);
-    var speaker = {"alias": "Speaker"};
-    sendMessage(content, actor);
+    sendMessage(content);
   }
 })
-
-Hook.on('renderChatMessage', (app, html, data) => {
-debugger;
-});
 
 function checkAbilities(data) {
   var cha = data.cha;
@@ -54,6 +48,7 @@ function checkAbilities(data) {
 
 function sendMessage(contentOut) {
   ChatMessage.create({
+    rollmode: "gmroll",
     content: contentOut,
     whisper: game.users.contents.filter(u => u.isGM).map(u => u.id),
     speaker: {"alias" : "Mr. Spy"},

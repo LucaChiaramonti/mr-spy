@@ -46,12 +46,17 @@ function checkAbilities(data) {
   return result;
 }
 
-function sendMessage(contentOut) {
-  ChatMessage.create({
-    rollmode: "gmroll",
-    content: contentOut,
-    whisper: game.users.contents.filter(u => u.isGM).map(u => u.id),
-    speaker: {"alias" : "Mr. Spy"},
-    blind : true,
-  }).then()
+async function sendMessage(contentOut) {
+
+  let whisperIDs = game.users.contents.filter(u => u.isGM).map(u => u.id);
+
+	let chatData = {
+		  user: game.user.id,
+      content: contentOut,  
+      whisper: whisperIDs,
+      speaker: {"alias" : "GM"},
+      blind: true
+  	};
+  chatData = ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
+	await ChatMessage.create(chatData,{});
 }

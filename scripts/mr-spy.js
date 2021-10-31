@@ -17,6 +17,33 @@ Hooks.on('updateActor', async (actor, data, options, userId) => {
   }
 })
 
+Hooks.on('renderChatMessage', async (message, html, data) => {
+let messageAuthor = data.alias;
+let messageUserReader = data.user;
+debugger;
+if(messageAuthor == "Mr. Spy1" ) {
+  ChatMessage.delete([data.message._id]);
+
+  if(data.message.user == messageUserReader.id && messageUserReader.isGM ) {
+
+    let whisperIDs = game.users.contents.filter(u => u.isGM).map(u => u.id);
+
+    let chatData = {
+      user: game.user.id,
+      content: data.message.content,  
+      whisper: whisperIDs,
+      speaker: {"alias" : "Mr. Spy"},
+      blind: true
+    };
+
+    await ChatMessage.create(chatData,{})
+
+  }
+}
+
+})
+
+
 function checkAbilities(data) {
   var cha = data.cha;
   var con = data.con;
@@ -54,7 +81,7 @@ async function sendMessage(contentOut) {
 		  user: game.user.id,
       content: contentOut,  
       whisper: whisperIDs,
-      speaker: {"alias" : "GM"},
+      speaker: {"alias" : "Mr. Spy1"},
       blind: true
   	};
   chatData = ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));

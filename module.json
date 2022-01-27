@@ -8,7 +8,7 @@
         "name": "Spiffero Spiffy"
     }],
     "minimumCoreVersion": "0.8.9",
-    "compatibleCoreVersion": "0.9.245",
+    "compatibleCoreVersion": "0.8.9",
     "scripts": [
 		"scripts/mr-spy.js"
 	],

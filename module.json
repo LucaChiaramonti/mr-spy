@@ -2,13 +2,13 @@
     "name": "mr-spy",
     "title": "Mr. Spy",
     "description": "Get informed of changes did by your players!",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "Spiffero Spiffy",
     "authors": [{
         "name": "Spiffero Spiffy"
     }],
     "minimumCoreVersion": "0.8.9",
-    "compatibleCoreVersion": "0.8.9",
+    "compatibleCoreVersion": "0.9.245",
     "scripts": [
 		"scripts/mr-spy.js"
 	],
@@ -17,6 +17,6 @@
         "name": "English",
         "path": "lang/en.json"
     }],
-    "manifest": "https://github.com/LucaChiaramonti/mr-spy/releases/download/1.0.5/module.json",
-    "download": "https://github.com/LucaChiaramonti/mr-spy/releases/download/1.0.5/module.zip"   
+    "manifest": "https://github.com/LucaChiaramonti/mr-spy/releases/download/1.0.6/module.json",
+    "download": "https://github.com/LucaChiaramonti/mr-spy/releases/download/1.0.6/module.zip"   
 }
